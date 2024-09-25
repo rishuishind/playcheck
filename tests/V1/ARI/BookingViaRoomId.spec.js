@@ -1,0 +1,36 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  test.setTimeout(60000);
+  await page.goto('http://localhost:3000/hotels/staybook-aira-xing-new-delhi/rooms?checkin=17-11-2024&checkout=20-11-2024&num_nights=3&num_guests=3&num_adults=1&num_rooms=1&num_children=2&child_age=0_8&child_age=1_4');
+  await page.getByRole('button', { name: 'View room' }).click();
+  await page.getByRole('button', { name: 'Add Room' }).nth(2).click();
+  await page.getByRole('button', { name: '2', exact: true }).click();
+  await page.locator('div').filter({ hasText: /^Deluxe Double Room\(AP Plan\)$/ }).locator('svg').click();
+  await page.getByRole('button', { name: 'View All Rooms' }).click();
+  await page.locator('.flex > .h-10').first().click();
+  await page.getByRole('button', { name: 'View room' }).click();
+  await page.getByRole('button', { name: 'GUESTS 1 Adults . 2 Child . 1' }).click();
+  await page.locator('div').filter({ hasText: /^2$/ }).getByRole('button').nth(1).click();
+  await page.locator('div').filter({ hasText: /^3$/ }).getByRole('button').first().click();
+  await page.locator('div').filter({ hasText: /^2$/ }).getByRole('button').first().click();
+  await page.locator('div').filter({ hasText: /^Children1$/ }).getByRole('button').first().click();
+  await page.locator('div').filter({ hasText: /^0$/ }).getByRole('button').nth(1).click();
+  await page.locator('div').filter({ hasText: /^Children1$/ }).getByRole('button').nth(1).click();
+  await page.getByRole('combobox').first().selectOption('6');
+  await page.getByRole('combobox').nth(1).selectOption('2');
+  await page.getByRole('button', { name: 'Proceed' }).click();
+  await page.goto('http://localhost:3000/hotels/staybook-aira-xing-new-delhi/rooms?checkin=17-11-2024&checkout=20-11-2024&num_nights=3&num_guests=3&num_adults=1&num_rooms=1&num_children=2&child_age=0_6&child_age=1_2');
+  await page.getByRole('button', { name: 'Book Now' }).click();
+  await page.getByPlaceholder('Enter your first name').click();
+  await page.getByPlaceholder('Enter your first name').fill('Rishabh');
+  await page.getByPlaceholder('Enter your first name').press('Tab');
+  await page.getByPlaceholder('Enter your last name').fill('Testing_Playwright_RoomID');
+  await page.getByPlaceholder('Enter your last name').press('Tab');
+  await page.getByPlaceholder('Enter your email').fill('hespnod45@gmail.com');
+  await page.getByPlaceholder('Enter your email').press('Tab');
+  await page.getByPlaceholder('1 (702) 123-').fill('+91 92050-97674');
+  await page.getByRole('button', { name: 'Proceed To Payment Options' }).click();
+  await page.getByText('Pay at Hotel₹').click();
+  await page.getByRole('button', { name: 'Proceed to pay at Hotel' }).click();
+});
