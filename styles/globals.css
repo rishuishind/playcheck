@@ -1,0 +1,150 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap'); */
+
+body {
+  font-family: sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: sans-serif;
+}
+
+@font-face {
+  font-family: "Dream Avenue";
+  src: url("/fonts/DreamAvenue.ttf") format("truetype");
+  font-display: swap;
+}
+* {
+  /* font-family: "Poppins", sans-serif; */
+  scroll-behavior: smooth;
+  scroll-margin-top: 180px;
+}
+
+@layer components {
+  .wrapper {
+    @apply container mx-auto max-w-[1200px] p-2 px-4 md:px-10 xl:px-0;
+  }
+}
+
+#destination {
+  scroll-margin-top: 52px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.container-snap::-webkit-scrollbar {
+  display: none;
+}
+.custom-shadow {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.searchHotel {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.container-snap {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.rdrMonthAndYearPickers {
+  color: transparent;
+}
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+._2qp0Z {
+  margin-bottom: 60px !important;
+}
+
+.lazy-heading {
+  content-visibility: auto;
+}
+
+.highlight {
+  animation: highlight-animation 2s ease-in-out;
+}
+
+@keyframes highlight-animation {
+  100%,
+  1% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.5);
+  }
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+body.overlay-form {
+  overflow: hidden;
+}
+/* Animation for blinking Cursor on input field of calendar */
+.cursor {
+  position: relative;
+}
+.cursor i {
+  position: absolute;
+  width: 1px;
+  height: 80%;
+  background-color: gray;
+  left: 5px;
+  top: 10%;
+  animation-name: blink;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+.cursor input:focus + i {
+  display: none;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.css-hbknsj-Input input {
+  --tw-ring-inset: 0 !important;
+  --tw-ring-color: transparent !important
+;
+}
+
+[type="text"]:focus {
+  --tw-ring-inset: 0 !important;
+  --tw-ring-color: transparent !important
+;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.independence-day-gradient {
+  background-image: linear-gradient(#ff671f, #eee 45% 55%, #046a38);
+}
+
+.animated-image {
+  bottom: 0%;
+  left: 0%;
+  position: absolute;
+  animation: run 20s linear infinite;
+}
+@keyframes run {
+  0% {
+    left: -15%;
+  }
+  100% {
+    left: 50%;
+  }
+}

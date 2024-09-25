@@ -1,0 +1,66 @@
+import * as crypto from "crypto";
+import { BookingDetails } from "../classModels/bookings/bookingDetails";
+
+export const encryptCCAvenue = (plainText: any, workingKey: any) => {
+  var m = crypto.createHash("md5");
+  m.update(workingKey);
+  var key = m.digest("binary");
+  var iv = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f";
+  var cipher = crypto.createCipheriv("aes-128-cbc", key, iv);
+  var encoded = cipher.update(plainText, "utf8", "hex");
+  encoded += cipher.final("hex");
+  return encoded;
+};
+
+export const decryptCCAvenue = (encText: any, workingKey: any) => {
+  var m = crypto.createHash("md5");
+  m.update(workingKey);
+  var key = m.digest("binary");
+  var iv = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f";
+  var decipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
+  var decoded = decipher.update(encText, "hex", "utf8");
+  decoded += decipher.final("utf8");
+  return decoded;
+};
+
+export const CCAvenueReqApi = async (
+  bookingDetails: BookingDetails
+): Promise<any> => {
+  const response = await fetch(
+    "/api/paymentGateway/CCAvenue/ccavRequestHandler",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        bookingDetails: bookingDetails,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response;
+
+  //   const data = await response.json();
+  //   return data.credentials;
+};
+
+export const CCAvenueResApi = async (
+  bookingDetails: BookingDetails
+): Promise<any> => {
+  const response = await fetch(
+    "/api/paymentGateway/CCAvenue/ccavResponseHandler",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        bookingDetails: bookingDetails,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  //   const data = await response.json();
+  //   return data.credentials;
+};

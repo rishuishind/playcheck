@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noImplicitAny": false,
+    "typeRoots": ["node_modules/@types", "types"],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./src/**/*.tsx", 
+    "./src/**/*.ts",
+    "**/*.tsx",
+    "**/*.ts",
+    "public/workers/hotelInfoPageWorker.worker.js",
+    "lib/handlers/mailService.ts",
+    "pages/api/userBookingMail.ts",
+    "pages/api/hotelierPriceBreakupMail.ts",
+    "pages/sitemap.xml.js",
+    "pages/cityPages.xml.js"
+,   "pages/cityRegionPages.xml.js", "lib/constantData/refundPolicyPage.js"],
+  "exclude": ["node_modules"]
+}

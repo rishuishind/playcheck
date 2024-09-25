@@ -1,0 +1,17 @@
+steps:
+# Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    ['build', '-t', 'gcr.io/spiritual-aloe-372507/website:latest', '.']
+
+# Push the Docker image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/spiritual-aloe-372507/website:latest']
+
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'website', '--image', 'gcr.io/spiritual-aloe-372507/website:latest', '--region', 'asia-south2']
+
+images:
+- 'gcr.io/spiritual-aloe-372507/website:latest'
